@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<!-- Bootstrap CSS -->
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+			integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"
+			crossorigin="anonymous"
+		/>
+
+		<!-- My CSS -->
+		<link rel="stylesheet" href="css/style.css" />
+
+		<title>HabitCheck</title>
+	</head>
+	<body>
+		<div class="container-fluid d-flex flex-column bg-light">
+			<!-- NAVBAR -->
+			<div class="row">
+				<nav>
+					<ul class="nav justify-content-center border-bottom">
+						<li class="nav-item">
+							<a href="#" class="nav-link nav-link-home">Home</a>
+						</li>
+						<li class="nav-item">
+							<a href="#" class="nav-link nav-link-habits">Habits</a>
+						</li>
+						<li class="nav-item">
+							<a href="#" class="nav-link nav-link-about">About</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+
+			<!-- HOME -->
+			<!-- Date -->
+			<div class="row py-3 row-1">
+				<div class="col-12">
+					<h2 class="display-1 text-center pb-2">Hello</h2>
+				</div>
+				<div class="col-4 mx-auto">
+					<h2 class="time display-1 text-center border mx-auto pb-2"></h2>
+				</div>
+				<div class="col-12">
+					<h2 class="date display-6 text-center"></h2>
+				</div>
+			</div>
+
+			<!-- Habits -->
+			<div class="row row-2">
+				<div class="col-12" style="height: 400px">
+					<div class="to-do d-flex flex-column pb-4">
+						<h2 class="display-6 text-center text-success">To Do:</h2>
+						<p class="p-2 border text-center daily-good-habit"></p>
+						<div class="form-check mx-auto">
+							<input type="checkbox" class="form-check-input" id="check1" />
+							<label for="check1" class="form-check-label"
+								>Check if you completed your good habit</label
+							>
+						</div>
+					</div>
+					<div class="dont-do d-flex flex-column pb-4">
+						<h2 class="display-6 text-center text-danger">Don't Do:</h2>
+						<p class="p-2 border text-center daily-bad-habit"></p>
+						<div class="form-check mx-auto">
+							<input type="checkbox" class="form-check-input" id="check2" />
+							<label for="check2" class="form-check-label"
+								>Check if you avoided your bad habit</label
+							>
+						</div>
+					</div>
+					<div class="stats d-flex">
+						<div class="score col-6 text-center border text-primary">
+							Score:
+						</div>
+						<div
+							class="streak col-6 text-center border-top border-right border-bottom text-primary"
+						>
+							Streak:
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- </div> -->
+
+			<!-- HABITS -->
+			<div class="row row-3">
+				<div class="col-12 d-flex flex-column justify-content-center">
+					<div class="good-habits">
+						<h2 class="display-6 text-center text-success py-4">Good Habits</h2>
+						<div class="input-group mb-3">
+							<input
+								type="text"
+								class="form-control"
+								placeholder="Add good habit"
+								aria-label="Add good habit"
+								aria-describedby="button-good-habit"
+								id="good-habit-input"
+							/>
+							<button
+								class="btn btn-outline-secondary btn-add"
+								type="submit"
+								id="button-good-habit"
+							>
+								Add
+							</button>
+						</div>
+						<table class="table">
+							<thead class="table-dark">
+								<tr>
+									<th scope="col" class="text-start">Habit</th>
+									<th scope="col" style="width: 20px">&#10005;</th>
+								</tr>
+							</thead>
+							<tbody id="good-habit-list">
+								<tr></tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="bad-habits">
+						<h2 class="display-6 text-center text-danger py-4">Bad Habits</h2>
+						<div class="input-group mb-3">
+							<input
+								type="text"
+								class="form-control"
+								placeholder="Add bad habit"
+								aria-label="Add bad habit"
+								aria-describedby="button-bad-habit"
+								id="bad-habit-input"
+							/>
+							<button
+								class="btn btn-outline-secondary btn-add"
+								type="button"
+								id="button-bad-habit"
+							>
+								Add
+							</button>
+						</div>
+						<table class="table">
+							<thead class="table-dark">
+								<tr>
+									<th scope="col" class="text-start">Habit</th>
+									<th scope="col" style="width: 20px">&#10005;</th>
+								</tr>
+							</thead>
+							<tbody id="bad-habit-list">
+								<tr></tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<!-- Toast -->
+			<div
+				class="toast"
+				role="alert"
+				data-animation="true"
+				aria-live="assertive"
+				aria-atomic="true"
+				data-delay="4000"
+				style="position: fixed; top: 10px; right: 10px"
+			>
+				<div class="toast-header">
+					<strong class="mr-auto">Error</strong>
+					<small>Just Now</small>
+					<button
+						type="button"
+						class="ml-2 mb-1 close"
+						data-dismiss="toast"
+						aria-label="Close"
+					>
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="toast-body">Field is empty, please add a habit.</div>
+			</div>
+			<div
+				class="toast"
+				role="alert"
+				data-animation="true"
+				aria-live="assertive"
+				aria-atomic="true"
+				data-delay="4000"
+				style="position: fixed; top: 10px; right: 10px"
+			>
+				<div class="toast-header">
+					<strong class="mr-auto">Error</strong>
+					<small>Just Now</small>
+					<button
+						type="button"
+						class="ml-2 mb-1 close"
+						data-dismiss="toast"
+						aria-label="Close"
+					>
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="toast-body">
+					Missing habits, please add at least 1 good habit and 1 bad habit.
+				</div>
+			</div>
+			<div
+				class="toast"
+				role="alert"
+				data-animation="true"
+				aria-live="assertive"
+				aria-atomic="true"
+				data-delay="4000"
+				style="position: fixed; top: 10px; right: 10px"
+			>
+				<div class="toast-header">
+					<strong class="mr-auto">Error</strong>
+					<small>Just Now</small>
+					<button
+						type="button"
+						class="ml-2 mb-1 close"
+						data-dismiss="toast"
+						aria-label="Close"
+					>
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="toast-body">Must have at least 1 good and one 1 habit.</div>
+			</div>
+
+			<!-- ABOUT -->
+			<div class="row row-4">
+				<div class="col-12 d-flex flex-column justify-content-center">
+					<div class="about text-center mx-auto">
+						<h2 class="display-6 text-center py-4">About</h2>
+						<p>
+							The idea behind HabitCheck is to help aid people who want to
+							replace their 'bad habits' with 'good habits'. All it takes to
+							benefit from this app is some self-awareness to identify unhelpful
+							patterns carried out in everyday life and some self-reflection to
+							pinpoint the areas in which you want to improve in. Of course,
+							consistency is also key.
+						</p>
+					</div>
+					<div class="about text-center mx-auto">
+						<h2 class="display-6 text-center py-4">The Sciene Behind Habits</h2>
+						<p>
+							Chunking is the brains process in which it converts a sequence of
+							actions into an automatic routine. This is at the root of how
+							habits form.
+						</p>
+						<p>
+							The brain is constantly looking for ways to save effort. This
+							effort-saving instinct is a huge advantage for two reasons. For
+							one, an efficient brain requires less room, which makes for a
+							small head, thus making childbirth easier. Secondly, an efficient
+							brain allows us to 'automate' certain behaviours, requiring less
+							mental effort which can be spent elsewhere.
+						</p>
+						<p>
+							The three step loop of habit formation involves a cue, a routine
+							and a reward. A cue tells your brain to go into automatic mode and
+							which habit to carry out. The routine, which can be physical or
+							mental, is then carried out. Finally, the reward tells the brain
+							if the particular loop is worth remembering for the future. Over
+							time, as this loop repeats itself, a habit is formed.
+						</p>
+						<p>
+							A habit cannot be eradicated - it must be replaced. HabitCheck is
+							built to help this process.
+						</p>
+					</div>
+					<div class="about text-center mx-auto pb-4">
+						<h2 class="display-6 text-center py-4">Rules</h2>
+						<p>
+							Everyday a 'good habit' and a 'bad habit' will be randomly
+							assigned to you on the homepage. If you carry out the 'good habit'
+							and avoid carrying out the 'bad habit', check their respective
+							checkboxes and a point will be added to your score and you will
+							gain a streak point. If you don't, your streak will be reset.
+						</p>
+						<p>
+							You can add and remove habits in the habits section. It's
+							advisable to keep the number of habits low as repeatedly doing/not
+							doing habits is beneficial to creating/breaking the habit loop.
+						</p>
+						<p>Upcoming updates: Milestones and Calendar.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Optional JavaScript -->
+		<!-- Popper.js first, then Bootstrap JS -->
+		<script
+			src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+			integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+			integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+			crossorigin="anonymous"
+		></script>
+
+		<!-- My JavaScript -->
+		<script src="js/app.js"></script>
+	</body>
+</html>
